@@ -1,0 +1,38 @@
+:root {
+  --bg-color: #F7F7F7;
+  --bold-color: #707070;
+  --bd-color: #EBEBEB;
+  --btn-color: #27C383;
+  
+  --bg-cart-color: #FFFFFF;
+  --cart-bd-color: #E2E2E2;
+  --bg-btn-cart-color: #F4F4F4;
+  
+  --description-color: #868686;
+  --numbers-color: #ADC0C4;
+  
+  --loto-color: #7F3992;
+  --mega-color: #01AC66;
+  --mania-color: #F79C31;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", sans-serif;
+  font-style: italic;
+  background-color: var(--bg-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  
+}
