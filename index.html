@@ -22,7 +22,7 @@
       <nav class="nav-link">
         <a href="#">
           Log out
-          <img src="./assets/next.png" alt="Sair">
+          <img src="./assets/right-arrow.png" alt="Sair">
         </a>
       </nav>
     </nav>
@@ -46,6 +46,7 @@
   
       <div class="numbers">
         <span id="num">01</span>
+        <span id="num">02</span>
       </div>
 
       <div class="options">
@@ -64,22 +65,66 @@
     </section>
 
     <section id="cart">
-      <h3>Cart</h3>
+      <div class="card-cart">
+        <h3>cart</h3>
+  
+        <div class="game-numbers">
+          <img src="./assets/trash.png" alt="Excluir jogo">
+          <span id="pipe"></span>
+         <div class="numbers-choosed">
+            <p class="cart-numbers">
+              01,02,05,04,17,25,50
+            </p>
+             <div class="game-price">
+               <p id="loto">Lotofácil:</p>
+               <p id="game-price">
+                 R$5,45
+               </p>
+             </div>
+          </div>
+        </div>
+        <div class="game-numbers">
+          <p><img src="./assets/trash.png" alt="Excluir jogo"></p>
+          <span id="pipe"></span>
+         <div class="numbers-choosed">
+            <p class="cart-numbers">
+              01,02,05,04,17,25,50
+            </p>
 
-      <div class="game-numbers">
-        <img src="./assets//trash.png" alt="Excluir jogo">
-        <span>|</span>
-        <p .class="cart-numbers">
-          01,02,05,04,17,25,50
-        </p>
-        <span class="game-price">
-          R$5,45
-        </span>
+             <div class="game-price">
+               <p id="mega">Mega-Sena:</p>
+               <p id="game-price">
+                 R$5,45
+               </p>
+             </div>
+          </div>
+        </div>
+
+        <div class="game-numbers">
+          <img src="./assets/trash.png" alt="Excluir jogo">
+          <span id="pipe"></span>
+         <div class="numbers-choosed">
+            <p class="cart-numbers">
+              01,02,05,04,17,25,50
+            </p>
+             <div class="game-price">
+               <p id="mania">Lotomania:</p>
+               <p id="game-price">
+                 R$5,45
+               </p>
+             </div>
+          </div>
+        </div>
+        
+        <span id="value-cart"><strong>Cart</strong> Total: <span class="total-value">R$5,45</span></span>
+        
+        <div class="btn-cart">
+          <button class="save-btn">
+            Save
+            <img src="./assets/right-arrow-btn.png" alt="">
+          </button>
+        </div>
       </div>
-
-      <span><strong>Cart</strong> Total: <span class="total-value"></span></span>
-
-      <button class="save-btn">Save</button>
     </section>
   </main>
 
