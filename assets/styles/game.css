@@ -11,7 +11,6 @@ header {
 header a {
   color: var(--bold-color);
   font-weight: 600;
- 
 }
 
 #logo,
@@ -33,13 +32,45 @@ header a {
 #logo > h1 {
   color: var(--bold-color);
   font-size: 2rem;
+
+  position: relative;
 }
 
+#logo > h1:after {
+  content: "";
+  position: absolute;
+
+  background-color: #B5C401;
+  top: 47px;
+  left: 58px;
+
+  width:60%;
+  height: 18%;
+
+  border-radius: 2rem;
+}
+
+
+#nav-links > .nav-link:first-child {
+  margin-right: 1.5rem;
+}
 
 #nav-links > .nav-link:last-child a{
   display: flex;
   align-items: center;
   padding-right: 4rem;
+  
+}
+
+#nav-links > .nav-link:last-child a img{
+  margin-left: 0.5rem;
+}
+
+/* Main */
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 6fr);
 }
 
 /* Game */
@@ -71,4 +102,72 @@ header a {
   background: var(--bg-cart-color);
   font-weight: bold;
   border-radius: 1rem;
+}
+
+#game > .choose-game > #loto {
+  color: var(--loto-color);
+  border: 3px solid var(--loto-color);
+}
+#game > .choose-game > #mega {
+  color: var(--mega-color);
+  border: 3px solid var(--mega-color);
+}
+#game > .choose-game > #mania {
+  color: var(--mania-color);
+  border: 3px solid var(--mania-color);
+}
+
+.active {
+  color: var(--bg-cart-color);
+}
+
+#game .description-game > p {
+  color: var(--description-color);
+  padding-bottom: 1.25rem;
+}
+
+#game > .numbers > #num {
+  background-color: var(--numbers-color);
+  padding: 1rem;
+  border-radius: 50%;
+  color: var(--bg-cart-color);
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 .5rem .5rem 0;
+}
+
+#game > .options {
+  padding-top: 2.75rem;
+}
+
+#game > .options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#game > .options button {
+  padding: .75rem 1.25rem;
+  color: var(--btn-color);
+  border: 1px solid var(--btn-color);
+  background: transparent;
+  border-radius: .5rem;
+  font-weight: bold;
+}
+
+#game > .options button:first-child {
+  margin-right: 1rem;
+}
+
+#game > .options > .add-cart #cart {
+  color: var(--bg-cart-color);
+  background-color: var(--btn-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game > .options > .add-cart #cart img{
+  margin-right: 1rem
 }
