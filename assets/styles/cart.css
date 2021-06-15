@@ -66,15 +66,15 @@
   font-weight: bold;
 }
 
-#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #loto {
+#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #loto-price {
   color: var(--loto-color);
 }
 
-#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #mega {
+#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #mega-price {
   color: var(--mega-color);
 }
 
-#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #mania {
+#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #mania-price {
   color: var(--mania-color);
 }
 

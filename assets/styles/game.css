@@ -104,7 +104,7 @@ main {
   border-radius: 1rem;
 }
 
-#game > .choose-game > #loto {
+#loto {
   color: var(--loto-color);
   border: 3px solid var(--loto-color);
 }
@@ -115,10 +115,6 @@ main {
 #game > .choose-game > #mania {
   color: var(--mania-color);
   border: 3px solid var(--mania-color);
-}
-
-.active {
-  color: var(--bg-cart-color);
 }
 
 #game .description-game > p {
