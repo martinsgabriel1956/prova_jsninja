@@ -1,0 +1,74 @@
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  border-bottom: 1px solid var(--bd-color);
+  padding: .75rem 2rem;
+}
+
+header a {
+  color: var(--bold-color);
+  font-weight: 600;
+ 
+}
+
+#logo,
+#nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#logo > h1 {
+  padding-left: 4rem;
+}
+
+#logo > a {
+  padding: 0 2rem;
+}
+
+
+#logo > h1 {
+  color: var(--bold-color);
+  font-size: 2rem;
+}
+
+
+#nav-links > .nav-link:last-child a{
+  display: flex;
+  align-items: center;
+  padding-right: 4rem;
+}
+
+/* Game */
+
+#game {
+  padding: 4rem 6rem;
+}
+
+#game > span:first-child {
+  font-size: 1.5rem;
+  color: var(--bold-color);
+  text-transform: uppercase;
+}
+
+#game > p {
+  margin: 2rem 0 1rem;
+  font-weight: bold;
+  color: var(--bold-color);
+}
+
+#game > .choose-game,
+#game > .description-game {
+  margin-bottom: 1rem;
+}
+
+#game > .choose-game > button {
+  margin-right: 1rem;
+  padding: .35rem 1rem;
+  background: var(--bg-cart-color);
+  font-weight: bold;
+  border-radius: 1rem;
+}
