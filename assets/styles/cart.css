@@ -1,0 +1,121 @@
+#cart {
+  padding: 2.5rem 0;
+}
+
+#cart > .card-cart{
+  display: inline-block;
+  background-color: var(--bg-cart-color);
+  padding: 1.25rem 0 0;
+
+  width: 250px;
+  
+  border-radius: .5rem;
+
+  border: 1px solid var(--cart-bd-color);
+}
+
+#cart > .card-cart > h3{
+  color: var(--bold-color);
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  padding-left: .75rem;
+}
+
+#cart > .card-cart .game-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem 2.5rem 1rem 0;
+  padding-left: 0;
+}
+
+#cart > .card-cart .game-numbers:nth-child(4) {
+  padding-bottom: 1.5rem;
+}
+
+#cart > .card-cart .game-numbers img {
+  padding: 0rem .5rem 0 ;
+  cursor: pointer;
+  position: relative;
+}
+
+#cart > .card-cart > .game-numbers > #pipe:after {
+  content: "";
+  position: absolute;
+
+  background-color: var(--loto-color);
+  width: 0.25%;
+  height: 9%;
+
+  left: 780px;
+  top: 170px;
+}
+
+#cart > .card-cart > .game-numbers > .numbers-choosed > .cart-numbers {
+  color: var(--bold-color);
+}
+
+#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price {
+  display: flex;
+  align-items: center;
+  padding-top: 1.25rem;
+}
+
+#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > p {
+  padding-right: .5rem;
+  font-weight: bold;
+}
+
+#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #loto {
+  color: var(--loto-color);
+}
+
+#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #mega {
+  color: var(--mega-color);
+}
+
+#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #mania {
+  color: var(--mania-color);
+}
+
+
+#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > p:last-child {
+  color: var(--description-color);
+}
+
+#cart > .card-cart > #value-cart {
+  color: var(--bold-color);
+  margin-top: 2rem;
+  padding-left: .75rem;
+}
+
+#cart > .card-cart > #value-cart > strong {
+  color: var(--description-color);
+  text-transform: uppercase;
+}
+
+#cart > .card-cart > .btn-cart {
+  background: var(--bg-btn-cart-color);
+  width: 100%;
+  padding: 1.25rem 0;
+  margin-top: 1.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#cart > .card-cart > .btn-cart > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--btn-color);
+  font-weight: bold;
+}
+
+#cart > .card-cart > .btn-cart > button > img {
+  margin-left: .5rem;
+}
