@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/styles/main.css">
+  <link rel="stylesheet" href="./assets/styles/game.css">
+  <link rel="stylesheet" href="./assets/styles/cart.css">
+  <title>TGL</title>
+</head>
+<body>
+  <header>
+    <nav id="logo">
+      <h1>TGL</h1>
+      <a href="#">Home</a>
+    </nav>
+    <nav id="nav-links">
+      <nav class="nav-link">
+        <a href="#">Account</a>
+      </nav>
+      <nav class="nav-link">
+        <a href="#">
+          Log out
+          <img src="./assets/next.png" alt="Sair">
+        </a>
+      </nav>
+    </nav>
+  </header>
+  <main>
+    <section id="game">
+      <span><strong>New Bet</strong> for Mega-Sena</span>
+      <p>Choose a game</p>
+  
+      <div class="choose-game">
+        <button id="loto">Lotofácil</button>
+        <button id="mega">Mega-Sena</button>
+        <button id="mania">Lotomania</button>
+      </div>
+
+      <p>Fill your bet</p>
+  
+      <div class="description-game">
+        <p>Escolha 15 números para apostar na lotofácil. Você ganha acertando 11, 12, 13, 14 ou 15 números. São muitas chances de ganhar, e agora você joga de onde estiver!</p>
+      </div>
+  
+      <div class="numbers">
+        <span id="num">01</span>
+      </div>
+
+      <div class="options">
+        <div class="options-game">
+          <button id="complete">Complete game</button>
+          <button id="clear">Clear game</button>
+        </div>
+
+        <div class="add-cart">
+          <button id="cart">
+            <img src="./assets/shopping-cart.png" alt="Adicionar no carrinho">
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="cart">
+      <h3>Cart</h3>
+
+      <div class="game-numbers">
+        <img src="./assets//trash.png" alt="Excluir jogo">
+        <span>|</span>
+        <p .class="cart-numbers">
+          01,02,05,04,17,25,50
+        </p>
+        <span class="game-price">
+          R$5,45
+        </span>
+      </div>
+
+      <span><strong>Cart</strong> Total: <span class="total-value"></span></span>
+
+      <button class="save-btn">Save</button>
+    </section>
+  </main>
+
+</body>
+</html>
