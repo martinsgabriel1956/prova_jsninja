@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="./assets/styles/cart.css">
   <title>TGL</title>
 </head>
-<body>
-  <header>
-    <nav id="logo">
+<body >
+  <header >
+    <nav  id="logo">
       <h1>TGL</h1>
       <a href="#">Home</a>
     </nav>
@@ -29,24 +29,23 @@
   </header>
   <main>
     <section id="game">
-      <span><strong>New Bet</strong> for Mega-Sena</span>
+      <span ><strong>New Bet</strong> for <span class="game-title"></span></span>
       <p>Choose a game</p>
   
       <div class="choose-game">
         <button id="loto">Lotofácil</button>
         <button id="mega">Mega-Sena</button>
-        <button id="mania">Lotomania</button>
+        <button id="mania">Quina</button>
       </div>
 
       <p>Fill your bet</p>
   
       <div class="description-game">
-        <p>Escolha 15 números para apostar na lotofácil. Você ganha acertando 11, 12, 13, 14 ou 15 números. São muitas chances de ganhar, e agora você joga de onde estiver!</p>
+        <p></p>
       </div>
   
       <div class="numbers">
-        <span id="num">01</span>
-        <span id="num">02</span>
+        
       </div>
 
       <div class="options">
@@ -76,7 +75,7 @@
               01,02,05,04,17,25,50
             </p>
              <div class="game-price">
-               <p id="loto">Lotofácil:</p>
+               <p id="loto-price">Lotofácil:</p>
                <p id="game-price">
                  R$5,45
                </p>
@@ -92,7 +91,7 @@
             </p>
 
              <div class="game-price">
-               <p id="mega">Mega-Sena:</p>
+               <p id="mega-price">Mega-Sena:</p>
                <p id="game-price">
                  R$5,45
                </p>
@@ -108,7 +107,7 @@
               01,02,05,04,17,25,50
             </p>
              <div class="game-price">
-               <p id="mania">Lotomania:</p>
+               <p id="mania-price">Lotomania:</p>
                <p id="game-price">
                  R$5,45
                </p>
@@ -127,6 +126,6 @@
       </div>
     </section>
   </main>
-
+  <script src="./assets/scripts/script.js"></script>
 </body>
 </html>
