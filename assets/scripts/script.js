@@ -82,10 +82,10 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
     lotoNumbers() {
       numbers.textContent = "";
 
-      for(let i = 0; i <= data.types[0].range; ++i) {
+      for(let i = 0; i < data.types[0].range; ++i) {
         let num = document.createElement('span');
         num.id = "num";
-        num.innerHTML = i;
+        num.innerHTML = i + 1;
         numbers.appendChild(num);
 
         if(i <= 25) {
@@ -97,10 +97,10 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
     },
     megaNumbers() {
       numbers.textContent = "";
-      for(let i = 0; i <= data.types[1].range; i++) {
+      for(let i = 0; i < data.types[1].range; i++) {
         let num = document.createElement('span');
         num.id = "num";
-        num.innerHTML = i;
+        num.innerHTML = i + 1;
         numbers.appendChild(num);
         
         if(i <= 15 ) {
@@ -113,10 +113,10 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
     quinaNumbers() {
       numbers.textContent = "";
       
-      for(let i = 0; i <= data.types[2].range; i++) {
+      for(let i = 0; i < data.types[2].range; i++) {
         let num = document.createElement('span');
         num.id = "num";
-        num.innerHTML = i;
+        num.innerHTML = i + 1;
         numbers.appendChild(num);
 
         if(i <= 15 ) {
