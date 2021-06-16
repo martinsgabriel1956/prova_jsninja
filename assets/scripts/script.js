@@ -8,7 +8,11 @@ let elements = {
   numbers: document.querySelector(".numbers")
 }
 
-console.log(elements.numbers);
+let lotoNumbers = [01,02,03,04,05,06,07,08,09,10,11,12,13,14,15];
+
+let megaNumbers = [01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60];
+
+let quinaNumbers = [01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80];
 
 let removeStyle = {
   removeLoto() {
@@ -76,48 +80,70 @@ let addInfo = {
   }
 }
 
-let lotoNumbers = [01,02,03,04,05,06,07,08,09,10,11,12,13,14,15];
+let generateNumbers = {
+  lotoNumbers() {
+    elements.numbers.textContent = "";
 
-let megaNumbers = [01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60];
-
-let quinaNumbers = [01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80];
-
-
-function clickEvents() {
-  elements.lotoBtn.addEventListener("click", () => {
-    active.activeLoto();
-    addInfo.lotoInfo();
-    lotoNumbers.forEach(item => {
+    lotoNumbers.forEach((item, index) => {
       let num = document.createElement('span');
       num.id = "num";
-      num.innerHTML = item;
+      num.innerHTML = index + 1;
       elements.numbers.appendChild(num);
-    })
 
-     
-  });
-  elements.megaBtn.addEventListener("click", () => {
-    active.activeMega();
-    addInfo.megaInfo();
-    megaNumbers.forEach(item => {
+      num.addEventListener("click", e => {
+        num.style.backgroundColor = "#7F3992"
+      })
+    })
+  },
+  megaNumbers() {
+    elements.numbers.textContent = ""
+
+    megaNumbers.forEach((item, index) => {
       let num = document.createElement('span');
       num.id = "num";
-      num.innerHTML = item;
+      num.innerHTML = index + 1;
+      
       elements.numbers.appendChild(num);
+
+      num.addEventListener("click", e => {
+        num.style.backgroundColor = "#01AC66"
+      })
     })
+  },
+  quinaNumbers() {
+    elements.numbers.textContent = "";
     
-  });
-  elements.maniaBtn.addEventListener("click", () => {
-    active.activeQuina();
-    addInfo.quinaInfo();
-
     quinaNumbers.forEach(item => {
       let num = document.createElement('span');
       num.id = "num";
       num.innerHTML = item;
       elements.numbers.appendChild(num);
 
+      num.addEventListener("click", e => {
+        num.style.backgroundColor = "#F79C31"
+      })
     })
+
+    
+  }
+}
+
+function clickEvents() {
+  elements.lotoBtn.addEventListener("click", () => {
+    active.activeLoto();
+    addInfo.lotoInfo();
+    generateNumbers.lotoNumbers();
+
+  });
+  elements.megaBtn.addEventListener("click", () => {
+    active.activeMega();
+    addInfo.megaInfo();
+    generateNumbers.megaNumbers();
+  });
+  elements.maniaBtn.addEventListener("click", () => {
+    active.activeQuina();
+    addInfo.quinaInfo();
+    generateNumbers.quinaNumbers();
   });
 }
 
