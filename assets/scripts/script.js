@@ -1,13 +1,17 @@
 let elements = {
   lotoBtn: document.querySelector("#loto"),
   megaBtn: document.querySelector("#mega"),
-  quinaBtn: document.querySelector("#mania"),
+  quinaBtn: document.querySelector("#quina"),
   gameTitle: document.querySelector(".game-title"),
   description: document.querySelector(".description-game > p"),
   numbers: document.querySelector(".numbers"),
-  completeGame: document.querySelector("#complete")
+  completeGame: document.querySelector("#complete"),
+  clearGame: document.querySelector("#clear")
 }
-const { lotoBtn, megaBtn, quinaBtn, gameTitle, description, numbers, completeGame } = elements;
+
+let clearBtn = "";
+
+const { lotoBtn, megaBtn, quinaBtn, gameTitle, description, numbers, completeGame, clearGame } = elements;
 
 let cart = [];
 let loto = [];
@@ -115,6 +119,7 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
     }
   }
 
+  
   let checkedNumbers = {
     checkedLotoNumbers() {
       let num = numbers.childNodes;
@@ -159,9 +164,35 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
 
     },
     clearGame() {
-      if(loto.length === data.types[0]["max-number"]) {
-        loto.pop(loto.length - 1);
+      let num = numbers.childNodes;
+
+      switch(clearBtn) {
+        case "loto":
+          num.forEach(item => {
+            item.removeAttribute("class")
+            item.style.backgroundColor = "#ECF3F7";
+            console.log(item)
+          });
+
+          break;
+        case "mega":
+          num.forEach(item => item.style.backgroundColor = "#ECF3F7");
+          break;
+        case "quina":
+           num.forEach(item => item.style.backgroundColor = "#ECF3F7");
+          break;
+        default: 
+          break;
       }
+      
+      // num.forEach((item, index) => {
+      //   if(num) {
+      //     loto.pop(item);
+      //   }
+      //   console.log(loto);
+      // })
+
+
     }
   }
   
@@ -184,7 +215,9 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
       generateNumbers.quinaNumbers();
       checkedNumbers.checkedQuinaNumbers();
     });
-    
+    clearGame.addEventListener("click", () => {
+      features.clearGame();
+    })
 
   }
 
