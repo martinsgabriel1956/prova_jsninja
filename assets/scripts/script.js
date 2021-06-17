@@ -5,13 +5,13 @@ let elements = {
   gameTitle: document.querySelector(".game-title"),
   description: document.querySelector(".description-game > p"),
   numbers: document.querySelector(".numbers"),
-  completeGame: document.querySelector("#complete"),
+  completeGameBtn: document.querySelector("#complete"),
   clearGame: document.querySelector("#clear")
 }
 
 let clearBtn = "";
 
-const { lotoBtn, megaBtn, quinaBtn, gameTitle, description, numbers, completeGame, clearGame } = elements;
+const { lotoBtn, megaBtn, quinaBtn, gameTitle, description, numbers, completeGame, clearGame,completeGameBtn } = elements;
 
 let cart = [];
 let loto = [];
@@ -107,6 +107,10 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
         num.value = i + 1;
         num.innerHTML = i + 1;
         numbers.appendChild(num);
+
+        if(num.value < 10) {
+          num.innerHTML = `0${i + 1}`;
+        }
       }
     },
     quinaNumbers() {
@@ -118,10 +122,12 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
         num.value = i + 1;
         num.innerHTML = i + 1;
         numbers.appendChild(num);
+        if(num.value < 10) {
+          num.innerHTML = `0${i + 1}`;
+        }
       }
     }
   }
-
   
   let checkedNumbers = {
     checkedLotoNumbers() {
@@ -162,39 +168,66 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
     }
   }
 
-  let features = {
-    completeGame(type) {
+  let completeGame = {
 
-    },
-    clearGame() {
+    complete() {
       let num = numbers.childNodes;
+      num.forEach((item, index) => {
+        if(loto.length < data.types[0]["max-number"]) {
+          num.values = Math.ceil(Math.random() * (data.types[0].range) + 1);
+  
+          loto.push(num.values);
+          let totalArr = loto[index] - 5
+    
+          for(let i = 0; i < totalArr; i++) {
+            item.style.backgroundColor = data.types[0].color;
+          }
+        }
+        if(mega.length < data.types[1]["max-number"]) {
+          num.values = Math.ceil(Math.random() * (data.types[1].range) + 1);
+  
+          mega.push(num.values);
+          let totalArr = mega[index]
+    
+          for(let i = 0; i < totalArr; i++) {
+            item.style.backgroundColor = data.types[1].color;
+          }
+        }
+        if(quina.length < data.types[2]["max-number"]) {
+          num.values = Math.ceil(Math.random() * (data.types[2].range) + 1);
+  
+          quina.push(num.values);
+          let totalArr = quina[index]
+    
+          for(let i = 0; i < totalArr; i++) {
+            item.style.backgroundColor = data.types[2].color;
+          }
+        }
+  
+      })
+    },
 
-      switch(clearBtn) {
-        case "loto":
-          num.forEach(item => {
-            item.removeAttribute("class")
-            item.style.backgroundColor = "#ECF3F7";
-            console.log(item)
-          });
+   
+    megaCompleteGame() {
+      let num = numbers.childNodes;
+      num.forEach((item, index) => {
+        if(loto.length < data.types[0]["max-number"]) {
+          num.values = Math.ceil(Math.random() * (data.types[1].range) + 1);
 
-          break;
-        case "mega":
-          num.forEach(item => item.style.backgroundColor = "#ECF3F7");
-          break;
-        case "quina":
-           num.forEach(item => item.style.backgroundColor = "#ECF3F7");
-          break;
-        default: 
-          break;
-      }
-      
-      // num.forEach((item, index) => {
-      //   if(num) {
-      //     loto.pop(item);
-      //   }
-      //   console.log(loto);
-      // })
+          loto.push(num.values);
+        }
 
+        let totalArr = (index + 1) == loto[index];
+
+        for(let i = 0; totalArr; i++) {
+          item.style.backgroundColor = data.types[1].color;
+        }
+      })
+    }
+  }
+
+  let features = {
+    clearGame() {
 
     }
   }
@@ -218,10 +251,12 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
       generateNumbers.quinaNumbers();
       checkedNumbers.checkedQuinaNumbers();
     });
+    completeGameBtn.addEventListener("click", () => {
+      completeGame.complete();
+    })
     clearGame.addEventListener("click", () => {
       features.clearGame();
     })
-
   }
 
   clickEvents();
