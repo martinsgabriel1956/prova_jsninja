@@ -92,6 +92,9 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
         num.value = i + 1;
         num.innerHTML = i + 1;
         numbers.appendChild(num);
+        if(num.value < 10) {
+          num.innerHTML = `0${i + 1}`;
+        }
       }
       
      
