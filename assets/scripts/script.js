@@ -1,17 +1,20 @@
 let elements = {
   lotoBtn: document.querySelector("#loto"),
   megaBtn: document.querySelector("#mega"),
-  maniaBtn: document.querySelector("#mania"),
+  quinaBtn: document.querySelector("#mania"),
   gameTitle: document.querySelector(".game-title"),
   description: document.querySelector(".description-game > p"),
-  num: document.querySelector("#num"),
-  numbers: document.querySelector(".numbers")
+  numbers: document.querySelector(".numbers"),
+  completeGame: document.querySelector("#complete")
 }
-const { lotoBtn, megaBtn, maniaBtn, gameTitle, description, num, numbers } = elements;
+const { lotoBtn, megaBtn, quinaBtn, gameTitle, description, numbers, completeGame } = elements;
+
+let cart = [];
+let loto = [];
+let mega = [];
+let quina = [];
 
 fetch('../../services/games.json').then(res => res.json()).then(data => {
-  console.log(data.types[0]["max-number"])
-
   let removeStyle = {
     removeLoto() {
       lotoBtn.classList.remove("active");
@@ -24,12 +27,11 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
       megaBtn.style.color = `${data.types[1].color}`;
     },
     removeQuina() {
-      maniaBtn.classList.remove("active");
-      maniaBtn.style.backgroundColor = "transparent";
-      maniaBtn.style.color = `${data.types[2].color}`;
+      quinaBtn.classList.remove("active");
+      quinaBtn.style.backgroundColor = "transparent";
+      quinaBtn.style.color = `${data.types[2].color}`;
     }
   }
-
   let active = {
     activeLoto() {
       if( lotoBtn.className !== "active") {
@@ -52,17 +54,16 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
       } 
     },
     activeQuina() {
-      if (maniaBtn.className !== "active") {
-        maniaBtn.classList.add("active");
-        maniaBtn.style.backgroundColor = `${data.types[2].color}`;
-        maniaBtn.style.color = "#FFF";
+      if (quinaBtn.className !== "active") {
+        quinaBtn.classList.add("active");
+        quinaBtn.style.backgroundColor = `${data.types[2].color}`;
+        quinaBtn.style.color = "#FFF";
         
         removeStyle.removeLoto();
         removeStyle.removeMega();
       }
     }
   }
-  
   let addInfo = {
     lotoInfo() {
       gameTitle.innerHTML = `${data.types[0].type}`;
@@ -77,7 +78,6 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
       description.innerHTML = `${data.types[2].description}`;
     }
   }
-  
   let generateNumbers = {
     lotoNumbers() {
       numbers.textContent = "";
@@ -85,29 +85,21 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
       for(let i = 0; i < data.types[0].range; ++i) {
         let num = document.createElement('span');
         num.id = "num";
+        num.value = i + 1;
         num.innerHTML = i + 1;
         numbers.appendChild(num);
-
-        if(i <= 25) {
-          num.addEventListener("click", e => {
-            num.style.backgroundColor = `${data.types[0].color}`
-          })
-        }
       }
+      
+     
     },
     megaNumbers() {
       numbers.textContent = "";
       for(let i = 0; i < data.types[1].range; i++) {
         let num = document.createElement('span');
         num.id = "num";
+        num.value = i + 1;
         num.innerHTML = i + 1;
         numbers.appendChild(num);
-        
-        if(i <= 15 ) {
-          num.addEventListener("click", e => {
-            num.style.backgroundColor = `${data.types[1].color}`
-          })
-        }
       }
     },
     quinaNumbers() {
@@ -116,14 +108,59 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
       for(let i = 0; i < data.types[2].range; i++) {
         let num = document.createElement('span');
         num.id = "num";
+        num.value = i + 1;
         num.innerHTML = i + 1;
         numbers.appendChild(num);
+      }
+    }
+  }
 
-        if(i <= 15 ) {
-          num.addEventListener("click", e => {
-            num.style.backgroundColor = `${data.types[2].color}`
-          })
-        }
+  let checkedNumbers = {
+    checkedLotoNumbers() {
+      let num = numbers.childNodes;
+      num.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          if(loto.length < data.types[0]["max-number"]){
+            item.setAttribute("class", "checked");
+            item.style.backgroundColor = data.types[0].color;
+            loto.push(num.value);
+          }
+        })
+      })
+    },
+    checkedMegaNumbers() {
+      let num = numbers.childNodes;
+      num.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          if(mega.length < data.types[1]["max-number"]){
+            item.setAttribute("class", "checked");
+            item.style.backgroundColor = data.types[1].color;
+            mega.push(num.value);
+          }
+        })
+      })
+    },
+    checkedQuinaNumbers() {
+      let num = numbers.childNodes;
+      num.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          if(quina.length < data.types[2]["max-number"]){
+            item.setAttribute("class", "checked");
+            item.style.backgroundColor = data.types[2].color;
+            quina.push(num.value);
+          }
+        })
+      })
+    }
+  }
+
+  let features = {
+    completeGame(type) {
+
+    },
+    clearGame() {
+      if(loto.length === data.types[0]["max-number"]) {
+        loto.pop(loto.length - 1);
       }
     }
   }
@@ -133,21 +170,23 @@ fetch('../../services/games.json').then(res => res.json()).then(data => {
       active.activeLoto();
       addInfo.lotoInfo();
       generateNumbers.lotoNumbers();
-      
+      checkedNumbers.checkedLotoNumbers();
     });
     megaBtn.addEventListener("click", () => {
       active.activeMega();
       addInfo.megaInfo();
       generateNumbers.megaNumbers();
+      checkedNumbers.checkedMegaNumbers();
     });
-    maniaBtn.addEventListener("click", () => {
+    quinaBtn.addEventListener("click", () => {
       active.activeQuina();
       addInfo.quinaInfo();
       generateNumbers.quinaNumbers();
+      checkedNumbers.checkedQuinaNumbers();
     });
+    
+
   }
-  
+
   clickEvents();
 })
-  
-  
