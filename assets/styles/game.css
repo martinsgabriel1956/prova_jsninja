@@ -113,9 +113,9 @@ main {
   color: var(--mega-color);
   border: 3px solid var(--mega-color);
 }
-#game > .choose-game > #mania {
-  color: var(--mania-color);
-  border: 3px solid var(--mania-color);
+#game > .choose-game > #quina {
+  color: var(--quina-color);
+  border: 3px solid var(--quina-color);
 }
 
 #game .description-game > p {
