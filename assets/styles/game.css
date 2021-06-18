@@ -71,7 +71,7 @@ header a {
 
 main {
   display: grid;
-  grid-template-columns: repeat(2, 6fr);
+  grid-template-columns: repeat(2, 8fr);
 }
 
 /* Game */
@@ -159,6 +159,11 @@ main {
   font-weight: bold;
 }
 
+#game > .options button:hover {
+  color: var(--bg-cart-color);
+  background-color: var(--btn-color);
+}
+
 #game > .options button:first-child {
   margin-right: 1rem;
 }
@@ -170,6 +175,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  opacity: 1
+}
+
+#game > .options > .add-cart #cart:hover {
+  opacity: .9;
 }
 
 #game > .options > .add-cart #cart img{

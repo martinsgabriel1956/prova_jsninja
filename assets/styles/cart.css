@@ -21,13 +21,23 @@
   padding-left: .75rem;
 }
 
-#cart > .card-cart .game-numbers {
+#cart > .card-cart > .cart-container > .game-numbers {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 1rem 2.5rem 1rem 0;
-  padding-left: 0;
+  width: 100%;
 }
+
+#cart > .card-cart > .cart-container {
+  display: inline-block;
+}
+
+#cart > .card-cart > .cart-container > .game-numbers > .numbers-choosed > .cart-numbers {
+  color: var(--bold-color);
+  padding: 0 .5rem;
+}
+
 
 #cart > .card-cart .game-numbers:nth-child(4) {
   padding-bottom: 1.5rem;
@@ -36,28 +46,17 @@
 #cart > .card-cart .game-numbers img {
   padding: 0rem .5rem 0 ;
   cursor: pointer;
-  position: relative;
 }
 
-#cart > .card-cart > .game-numbers > #pipe:after {
-  content: "";
-  position: absolute;
-
-  background-color: var(--loto-color);
-  width: 0.25%;
-  height: 9%;
-
-  left: 780px;
-  top: 170px;
-}
 
 #cart > .card-cart > .game-numbers > .numbers-choosed > .cart-numbers {
   color: var(--bold-color);
 }
 
-#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price {
+#cart > .card-cart > .cart-container > .game-numbers > .numbers-choosed > .game-price {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-top: 1.25rem;
 }
 
