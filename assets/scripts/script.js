@@ -30,7 +30,6 @@ const {
   totalPayment,
   gameNumbers,
   cartContainer,
-  
 } = elements;
 
 fetch("../../services/games.json")
@@ -80,118 +79,121 @@ fetch("../../services/games.json")
   }
   chooseGame();
 });
-    
-    let features = {
-      clearGame() {
-        cart = [];
 
-        const allNumbers = document.querySelectorAll('#num');
+  let features = {
+    clearGame() {
+      cart = [];
 
-        allNumbers.forEach(item => {
-          if(item.hasAttribute("clicked")) {
-            item.removeAttribute("clicked")
-          };
+      const allNumbers = document.querySelectorAll('#num');
 
-          item.style.backgroundColor = "#ADC0C4";
-        })
-      },
-      completeGame() {
-        fetch("../../services/games.json").then(res => res.json()).then(data => {
-          completeGameBtn.addEventListener('click', () => {
-            const allNumbers = document.querySelectorAll('#num');
-              
-              while(cart.length < data.types[setIndex]["max-number"]) {
-                let match = Math.ceil(Math.random() * (data.types[setIndex].range) + 1);
-                
-                allNumbers.forEach(num => {
-                  if(match == num.value && !num.hasAttribute("clicked")) {
-                    num.setAttribute("clicked", "true");
-                    num.style.backgroundColor = data.types[setIndex].color;
-                    cart.push(num.value);
-                    return cart;
-                  }
-                })
-              }
-          })
-        
-        });
-        return cart;
-      },
-      addToCart() {
-        fetch("../../services/games.json").then(res => res.json().then(data => {
-          if(cart.length == data.types[setIndex]["max-number"]) {
-            gameNumbers.setAttribute(`gamePrice`, data.types[setIndex].price);
-            
-            totalValue.push(Number(gameNumbers.getAttribute("gamePrice")));
+      allNumbers.forEach(item => {
+        if(item.hasAttribute("clicked")) {
+          item.removeAttribute("clicked")
+        };
 
-            gameNumbers.innerHTML = `
-              <span onClick="this.deleteNumberInCart">
-                <img src="./assets/trash.png" alt="Excluir jogo">
-              </span>
-              <span id="pipe"></span>
-              <div class="numbers-choosed">
-                <p class="cart-numbers">
-                  ${cart}
-                </p>
-                <div class="game-price">
-                  <p style="color:${data.types[setIndex].color};">${data.types[setIndex].type}</p>
-                  <p id="game-price">
-                    R${data.types[setIndex].price.toFixed(2).replace('.', ',')}
-                  </p>
-                </div>
-              </div>
-            `
-
-            cartContainer.appendChild(gameNumbers);
-            
-            this.value();
-           
-            let numberContainer = document.querySelectorAll(".game-numbers");
-
-            numberContainer.forEach(item => {
-              item.addEventListener("click", () => {
-                item.setAttribute("checked", "true");
-                return console.log(item);
-              })
-            })
-          }
-        }))
-      },
-      deleteNumberInCart() {
-        let numberContainer = document.querySelectorAll(".game-numbers");
-
-        numberContainer.forEach(item => {
-          item.addEventListener("click", () => {
-            if(item.hasAttribute("checked")) {
-              item.parentNode.removeChild(item);
-              console.log(item.parentNode)
-              totalValue.splice(totalValue.indexOf(parseFloat(item.getAttribute('gamePrice'))), 1)
-            }
-          })
-        })
-      },
-      value() {
-        const result = totalValue.reduce((acc, item) => {
-          return acc + item;
-        })
-
-        totalPayment.textContent = result.toFixed(2).replace(".", ",");
-
-        if(totalValue.length == 0) totalValue.textContent = "0,00";
-
-      }
-      
-    };
-
-    function clickEvents() {
-      completeGameBtn.addEventListener("click", () => {
-          features.completeGame();
-      }),
-      clearGameBtn.addEventListener("click", () => {
-        features.clearGame();
-      });
-      addToCartBtn.addEventListener("click", () => {
-        features.addToCart();
+        item.style.backgroundColor = "#ADC0C4";
       })
+    },
+    completeGame() {
+      fetch("../../services/games.json").then(res => res.json()).then(data => {
+        completeGameBtn.addEventListener('click', () => {
+          const allNumbers = document.querySelectorAll('#num');
+            
+            while(cart.length < data.types[setIndex]["max-number"]) {
+              let match = Math.ceil(Math.random() * (data.types[setIndex].range) + 1);
+              
+              allNumbers.forEach(num => {
+                if(match == num.value && !num.hasAttribute("clicked")) {
+                  num.setAttribute("clicked", "true");
+                  num.style.backgroundColor = data.types[setIndex].color;
+                  cart.push(num.value);
+                  return cart;
+                }
+              })
+            }
+        })
+      
+      });
+      return cart;
+    },
+    addToCart() {
+      fetch("../../services/games.json").then(res => res.json().then(data => {
+        if(cart.length == data.types[setIndex]["max-number"]) {
+          gameNumbers.setAttribute(`price`, data.types[setIndex].price);
+          
+          totalValue.push(Number(gameNumbers.getAttribute("price")));
+
+          gameNumbers.innerHTML = `
+            <span onClick="features.deleteNumberInCart()">
+              <img src="./assets/trash.png" alt="Excluir jogo">
+            </span>
+            <span id="pipe"></span>
+            <div class="numbers-choosed">
+              <p class="cart-numbers">
+                ${cart}
+              </p>
+              <div class="game-price">
+                <p style="color:${data.types[setIndex].color};">${data.types[setIndex].type}</p>
+                <p id="game-price">
+                  R$${data.types[setIndex].price.toFixed(2).replace('.', ',')}
+                </p>
+              </div>
+            </div>
+          `
+
+          cartContainer.appendChild(gameNumbers);
+          console.log(cartContainer)
+          
+          this.value();
+          
+          let numberContainer = document.querySelectorAll(".game-numbers");
+          console.log(numberContainer);
+
+          
+          numberContainer.forEach(item => {
+            item.addEventListener("click", () => {
+              item.setAttribute("checked", "true");
+              return item;
+            })
+          })
+        }
+        clearGameBtn.click();
+      }))
+    },
+    deleteNumberInCart() {
+      let numberContainer = document.querySelectorAll(".game-numbers");
+
+      numberContainer.forEach(item => {
+        item.addEventListener("click", () => {
+          if(item.hasAttribute("checked")) {
+            item.parentNode.removeChild(item);
+            totalValue.splice(totalValue.indexOf(Number(item.getAttribute('price'))), 1)
+          }
+          this.value();
+        })
+      })
+    },
+    value() {
+      const result = totalValue.reduce((acc, item) => {
+        return acc + item;
+      })
+
+      totalPayment.textContent = result.toFixed(2).replace(".", ",");
+
+      if(totalValue.length == 0) totalValue.innerHTML = "0,00";
     }
-    clickEvents()
+  };
+
+  function clickEvents() {
+    completeGameBtn.addEventListener("click", () => {
+        features.completeGame();
+    }),
+    clearGameBtn.addEventListener("click", () => {
+      features.clearGame();
+    });
+    addToCartBtn.addEventListener("click", () => {
+      features.addToCart();
+    })
+  }
+
+  clickEvents();
