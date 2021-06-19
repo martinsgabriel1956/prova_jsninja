@@ -13,7 +13,7 @@ let elements = {
 
 let setIndex = "";
 let cart = [];
-let totalValue = [];
+let totalValue = [0];
 
 const {
   title,
