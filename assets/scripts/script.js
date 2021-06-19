@@ -1,7 +1,6 @@
 let elements = {
   game: document.querySelector(".choose-game"),
   title: document.querySelector(".game-title"),
-
   description: document.querySelector(".description-game > p"),
   numbers: document.querySelector(".numbers"),
   completeGameBtn: document.querySelector("#complete"),
@@ -9,7 +8,6 @@ let elements = {
   addToCartBtn: document.querySelector("#cart"),
   cardCart: document.querySelector(".card-cart"),
   totalPayment: document.querySelector(".total-value"),
-  gameNumbers: document.querySelector(".game-numbers"),
   cartContainer: document.querySelector(".cart-container"),
 };
 
@@ -28,7 +26,6 @@ const {
   addToCartBtn,
   cardCart,
   totalPayment,
-  gameNumbers,
   cartContainer,
 } = elements;
 
@@ -117,9 +114,12 @@ fetch("../../services/games.json")
       return cart;
     },
     addToCart() {
+      let gameNumbers = document.createElement("div");
+      gameNumbers.classList.add("game-numbers")
+
       fetch("../../services/games.json").then(res => res.json().then(data => {
         if(cart.length == data.types[setIndex]["max-number"]) {
-          gameNumbers.setAttribute(`price`, data.types[setIndex].price);
+          gameNumbers.setAttribute(`price`, `${data.types[setIndex].price}`);
           
           totalValue.push(Number(gameNumbers.getAttribute("price")));
 
@@ -127,7 +127,6 @@ fetch("../../services/games.json")
             <span onClick="features.deleteNumberInCart()">
               <img src="./assets/trash.png" alt="Excluir jogo">
             </span>
-            <span id="pipe"></span>
             <div class="numbers-choosed">
               <p class="cart-numbers">
                 ${cart}
@@ -142,14 +141,11 @@ fetch("../../services/games.json")
           `
 
           cartContainer.appendChild(gameNumbers);
-          console.log(cartContainer)
           
           this.value();
           
           let numberContainer = document.querySelectorAll(".game-numbers");
-          console.log(numberContainer);
-
-          
+         
           numberContainer.forEach(item => {
             item.addEventListener("click", () => {
               item.setAttribute("checked", "true");
@@ -180,7 +176,7 @@ fetch("../../services/games.json")
 
       totalPayment.textContent = result.toFixed(2).replace(".", ",");
 
-      if(totalValue.length == 0) totalValue.innerHTML = "0,00";
+      if(totalValue.length == 0) totalValue.textContent = "R$0,00";
     }
   };
 
