@@ -134,16 +134,16 @@ let features = {
 
         gameNumbers.innerHTML = `
             <span onClick="features.deleteNumberInCart()">
-              <img src="./assets/trash.png" alt="Excluir jogo">
+              <img src="./assets/delete.png" alt="Excluir jogo">
             </span>
-            <div class="numbers-choosed">
+            <div class="numbers-choosed" style="border-left: 4px solid ${data.types[setIndex].color}; border-radius: .25rem;">
               <p class="cart-numbers">
                 ${cart}
               </p>
               <div class="game-price">
                 <p style="color:${data.types[setIndex].color};">${
           data.types[setIndex].type
-        }</p>
+        }:</p>
                 <p id="game-price">
                   R$${data.types[setIndex].price.toFixed(2).replace(".", ",")}
                 </p>
