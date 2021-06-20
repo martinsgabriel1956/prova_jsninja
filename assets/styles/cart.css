@@ -20,16 +20,20 @@
   font-size: 1.25rem;
 }
 
+#cart > .card-cart > .cart-container {
+  width: 100%;
+  padding-bottom: 1.25rem;
+}
+
 #cart > .card-cart > .cart-container > .game-numbers {
   display: flex;
   align-items: center;
-  padding: 1rem 2.5rem 1rem 0;
-  width: 100%;
+  padding: 1rem 1rem 1rem 0;
 }
 
 #cart > .card-cart > .cart-container > .game-numbers > .numbers-choosed > .cart-numbers {
   color: var(--bold-color);
-  padding: 0 .75rem ;
+  padding-left:.75rem;
   font-weight: bold;
   word-break: break-all;
   width: 100%;
@@ -68,7 +72,7 @@
   display: flex;
   align-items: center;
 
-  padding-top: 1.25rem;
+  padding-top: .25rem;
   color: var(--bold-color);
   padding-left: .65rem;
   margin-top: .25rem;
@@ -81,12 +85,12 @@
 }
 #cart > .card-cart > .cart-container > .game-numbers > .numbers-choosed > .game-price > p:last-child {
   color: var(--description-color);
+  font-style: normal;
 }
 
 #cart > .card-cart > #value-cart {
   color: var(--bold-color);
-  margin-top: 2rem;
-  padding-left: 1rem;
+  padding-left: 1.25rem;
   font-size: 1.25rem;
   text-transform: uppercase;
   font-style: normal;

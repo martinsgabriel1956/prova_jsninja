@@ -157,11 +157,7 @@ let features = {
 
         let numberContainer = document.querySelectorAll(".game-numbers");
 
-        numberContainer.forEach((item) =>
-          item.addEventListener("click", () =>
-            item.setAttribute("checked", "true")
-          )
-        );
+        numberContainer.forEach((item) => item.addEventListener("click", () => item.setAttribute("checked", "true")));
       }
       clearGameBtn.click();
     });
