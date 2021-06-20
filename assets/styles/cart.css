@@ -7,10 +7,8 @@
   background-color: var(--bg-cart-color);
   padding: 1.25rem 0 0;
 
-  width: 250px;
-  
+  width: 280px;
   border-radius: .5rem;
-
   border: 1px solid var(--cart-bd-color);
 }
 
@@ -18,34 +16,47 @@
   color: var(--bold-color);
   text-transform: uppercase;
   padding-bottom: 1rem;
-  padding-left: .75rem;
+  padding-left: 1.25rem;
+  font-size: 1.25rem;
 }
 
 #cart > .card-cart > .cart-container > .game-numbers {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 1rem 2.5rem 1rem 0;
   width: 100%;
 }
 
-#cart > .card-cart > .cart-container {
-  display: inline-block;
-}
-
 #cart > .card-cart > .cart-container > .game-numbers > .numbers-choosed > .cart-numbers {
   color: var(--bold-color);
-  padding: 0 .5rem;
-}
-
-
-#cart > .card-cart .game-numbers:nth-child(4) {
-  padding-bottom: 1.5rem;
+  padding: 0 .75rem ;
+  font-weight: bold;
+  word-break: break-all;
+  width: 100%;
 }
 
 #cart > .card-cart .game-numbers img {
-  padding: 0rem .5rem 0 ;
+  padding: 0rem 1rem 0 ;
   cursor: pointer;
+  opacity: 1;
+}
+
+#cart > .card-cart .game-numbers img:hover {
+  opacity: .75;
+  transition: opacity .75s;
+}
+
+#cart > .card-cart > .game-numbers {
+  display: inline-block;
+}
+
+#cart > .card-cart > .game-numbers > .numbers-choosed {
+  border-width: 1px;
+  border-style: solid;
+}
+
+#cart > .card-cart > .game-numbers > .numbers-choosed:last-child {
+  margin-bottom: 1.75rem;
 }
 
 
@@ -56,41 +67,35 @@
 #cart > .card-cart > .cart-container > .game-numbers > .numbers-choosed > .game-price {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
   padding-top: 1.25rem;
+  color: var(--bold-color);
+  padding-left: .65rem;
+  margin-top: .25rem;
+  margin-bottom: .25rem;
 }
 
-#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > p {
-  padding-right: .5rem;
+#cart > .card-cart > .cart-container > .game-numbers > .numbers-choosed > .game-price > p:first-child {
   font-weight: bold;
+  padding-right: 1rem;
 }
-
-#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #loto-price {
-  color: var(--loto-color);
-}
-
-#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #mega-price {
-  color: var(--mega-color);
-}
-
-#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > #mania-price {
-  color: var(--mania-color);
-}
-
-
-#cart > .card-cart > .game-numbers > .numbers-choosed > .game-price > p:last-child {
+#cart > .card-cart > .cart-container > .game-numbers > .numbers-choosed > .game-price > p:last-child {
   color: var(--description-color);
 }
 
 #cart > .card-cart > #value-cart {
   color: var(--bold-color);
   margin-top: 2rem;
-  padding-left: .75rem;
+  padding-left: 1rem;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 100;
 }
 
 #cart > .card-cart > #value-cart > strong {
-  color: var(--description-color);
-  text-transform: uppercase;
+  color: var(--bold-color);
+  font-style: italic;
 }
 
 #cart > .card-cart > .btn-cart {
@@ -102,6 +107,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top: 1px solid var(--cart-bd-color);
 }
 
 #cart > .card-cart > .btn-cart > button {
@@ -110,7 +116,7 @@
   justify-content: center;
   background-color: transparent;
   border: none;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--btn-color);
   font-weight: bold;
 }
