@@ -192,9 +192,9 @@ let features = {
 };
 
 let clickEvents = () => {
-  completeGameBtn.addEventListener("click", () => features.completeGame()),
-    clearGameBtn.addEventListener("click", () => features.clearGame()),
-    addToCartBtn.addEventListener("click", () => features.addToCart());
+  completeGameBtn.addEventListener("click", features.completeGame()),
+  clearGameBtn.addEventListener("click", () => features.clearGame()),
+  addToCartBtn.addEventListener("click", () => features.addToCart());
 };
 
 clickEvents();
