@@ -128,3 +128,15 @@
 #cart > .card-cart > .btn-cart > button > img {
   margin-left: .5rem;
 }
+
+#cart > .card-cart > .cart-container > #empty-card {
+  display: flex;
+  align-items: center;
+  color: var(--bold-color);
+  margin-left: 1rem;
+}
+
+#cart > .card-cart > .cart-container > #empty-card > img {
+  margin-right: 1rem;
+  text-align: center;
+} 

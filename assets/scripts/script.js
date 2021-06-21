@@ -50,13 +50,13 @@ loadData().then((data) => {
       typeGame.textContent = item.type;
       typeGame.style.border = `4px solid ${item.color}`;
       typeGame.style.color = item.color;
+      typeGame.id = "game-" + index;
       game.appendChild(typeGame);
 
       typeGame.addEventListener("click", () => {
         cart = [];
 
-        title.textContent = item.type;
-        description.textContent = item.description;
+        styleButton(typeGame, item);
 
         numbers.textContent = "";
 
@@ -70,23 +70,48 @@ loadData().then((data) => {
 
           num.addEventListener("click", () => {
             if (
-              cart.length < item["max-number"] &&
-              cart.indexOf(num.value) == -1
+              cart.length <= item["max-number"] - 1
             ) {
-              num.setAttribute("clicked", "true");
-              num.style.backgroundColor = item.color;
-              cart.push(num.value);
-              return cart;
+
+              let ifClicked = num.classList.toggle("clicked");
+
+              if(ifClicked) {
+                num.style.backgroundColor = item.color;
+                cart.push(num.value);
+                console.log(cart);
+                return cart;
+              } else {
+                num.style.backgroundColor = "#ADC0C4";
+                ;
+                cart.splice(cart.indexOf(num.value), 1);
+                console.log(cart)
+                return cart;
+              }
             }
           });
           numbers.appendChild(num);
         }
         setIndex = index;
       });
-
       return setIndex;
     });
   }
+
+  function styleButton(typeGame, item) {
+    document.querySelectorAll(".game").forEach((element) => {
+      element.style.backgroundColor = "#FFF";
+      element.classList.remove("active");
+      element.style.color = element.style.borderColor;
+    })
+
+    typeGame.classList.add("active");
+    typeGame.style.backgroundColor = item.color;
+    typeGame.style.color = "#FFF";
+    
+    title.textContent = item.type;
+    description.textContent = item.description;
+  }
+
   chooseGame();
 });
 
@@ -104,6 +129,7 @@ let features = {
   completeGame() {
     loadData().then((data) => {
       completeGameBtn.addEventListener("click", () => {
+        this.clearGame();
         const allNumbers = document.querySelectorAll("#num");
 
         while (cart.length < data.types[setIndex]["max-number"]) {
@@ -152,19 +178,20 @@ let features = {
           `;
 
         cartContainer.appendChild(gameNumbers);
-
+        
         this.value();
 
         let numberContainer = document.querySelectorAll(".game-numbers");
 
         numberContainer.forEach((item) => item.addEventListener("click", () => item.setAttribute("checked", "true")));
+
       }
       clearGameBtn.click();
     });
   },
   deleteNumberInCart() {
     let numberContainer = document.querySelectorAll(".game-numbers");
-
+    
     numberContainer.forEach((item) => {
       item.addEventListener("click", () => {
         if (item.hasAttribute("checked")) {
@@ -172,18 +199,29 @@ let features = {
           totalValue.splice(
             totalValue.indexOf(Number(item.getAttribute("price"))),
             1
-          );
-        }
-        this.value();
+            );
+          }
+          this.value();
+          console.log(totalValue);
+        });
       });
-    });
-  },
-  value() {
-    const result = totalValue.reduce((acc, item) => acc + item);
+    },
+    value() {
+      let emptyCart = document.querySelector("#empty-card");
+      
+      if (totalValue.length == 1) {
+        emptyCart.style.display = 'inline-block'
+    } else {
+        emptyCart.style.display = 'none'
+    }
+      
+      const result = totalValue.reduce((acc, item) => acc + item);
+      
+      totalPayment.textContent = result.toFixed(2).replace(".", ",");
 
-    totalPayment.textContent = result.toFixed(2).replace(".", ",");
-
-    if (totalValue.length == 0) totalValue.textContent = "R$0,00";
+    if (totalValue.length == 1) {
+      totalPayment.textContent = "R$0,00";
+    }
   },
 };
 
